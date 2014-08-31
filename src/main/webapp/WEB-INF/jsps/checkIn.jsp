@@ -8,9 +8,9 @@
     <form:form commandName="guest">
         <table>
             <tr>
-                <td><form:input path="name"/>
+                <td><form:input path="name"/></td>
                 <td><input type="submit" value="Reserve"</td>
-            <tr>
+            </tr>
         </table>
     </form:form>
 
