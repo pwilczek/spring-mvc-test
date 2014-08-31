@@ -7,8 +7,17 @@ import org.junit.Test;
  */
 public class HotelTest {
 
-    @Test(expected = IllegalStateException.class)
-    public void shouldNotAllowNegativeCapacity(){
-        Hotel hotel=new Hotel(-1);
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotAllowNegativeCapacity() {
+        Hotel hotel = Hotel.withCapacity(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotAllowExceedCapacity() {
+        Hotel hotel = Hotel.withCapacity(1);
+        Guest first = new Guest();
+        Guest second = new Guest();
+        hotel.checkIn(first);
+        hotel.checkIn(second);
     }
 }
