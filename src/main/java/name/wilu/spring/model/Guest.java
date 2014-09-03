@@ -19,4 +19,8 @@ public class Guest {
     public String toString() {
         return getName();
     }
+
+    public boolean isNotEmpty() {
+        return name!=null && !name.isEmpty();
+    }
 }

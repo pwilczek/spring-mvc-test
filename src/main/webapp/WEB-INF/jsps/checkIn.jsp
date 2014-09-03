@@ -4,11 +4,14 @@
     version="2.1">
 
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+    <a href="?Lang=en">EN</a> || <a href="?Lang=pl">PL</a>
 
     <form:form commandName="guest">
         <table>
             <tr>
-                <td><form:input path="name"/></td>
+                <td><spring:message code="forName.text"/><form:input path="name"/></td>
                 <td><input type="submit" value="Reserve"</td>
             </tr>
         </table>

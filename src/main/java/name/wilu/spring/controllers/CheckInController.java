@@ -19,7 +19,6 @@ public class CheckInController {
     @RequestMapping("/checkIn")
     public String checkIn(@ModelAttribute("guest") Guest guest) {
         star.checkIn(guest);
-        System.out.println("A new guest has been checked in: " + guest);
         return Views.CheckIn.view().go();
     }
 }

@@ -12,7 +12,7 @@ public class Hotel {
     private final int capacity;
     private final List<Guest> guests;
 
-    public static Hotel withCapacity(int capacity){
+    public static Hotel withCapacity(int capacity) {
         return new Hotel(capacity);
     }
 
@@ -20,12 +20,18 @@ public class Hotel {
     private Hotel(int capacity) {
         Preconditions.checkArgument(capacity >= 0, "Hotel capacity cannot be negative!");
         this.capacity = capacity;
-        this.guests=new ArrayList<Guest>(capacity);
+        this.guests = new ArrayList<Guest>(capacity);
     }
 
-    public void checkIn(Guest guest){
-        Preconditions.checkArgument(guests.size()<capacity,"Hotel capacity exceeded!");
-        guests.add(guest);
+    public boolean checkIn(Guest guest) {
+        Preconditions.checkArgument(guests.size() < capacity, "Hotel capacity exceeded!");
+        if (guest.isNotEmpty()) {
+            System.out.println("A new guest has been checked in: " + guest);
+            return guests.add(guest);
+        } else {
+            System.out.println("Got empty guest - skipping!");
+            return false;
+        }
     }
 
 }
