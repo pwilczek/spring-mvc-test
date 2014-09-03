@@ -2,6 +2,7 @@ package name.wilu.spring.controllers;
 
 import name.wilu.spring.model.Guest;
 import name.wilu.spring.model.Hotel;
+import name.wilu.spring.view.Views;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,6 @@ public class CheckInController {
     public String checkIn(@ModelAttribute("guest") Guest guest) {
         star.checkIn(guest);
         System.out.println("A new guest has been checked in: " + guest);
-        return "checkIn";
+        return Views.CheckIn.view().go();
     }
 }
