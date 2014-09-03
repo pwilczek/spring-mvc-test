@@ -12,6 +12,8 @@
 
     <mvc:annotation-driven/>
     <context:component-scan base-package="name.wilu.spring"/>
+    
+    <mvc:resources mapping="/pdfs/**" location="pdfs"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsps/"/>
