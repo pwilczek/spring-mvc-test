@@ -1,7 +1,12 @@
 package name.wilu.spring.controllers;
 
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 import name.wilu.spring.model.Guest;
 import name.wilu.spring.model.Hotel;
+import name.wilu.spring.model.Room;
+import name.wilu.spring.model.Standard;
 import name.wilu.spring.repository.HotelRepository;
 import name.wilu.spring.view.Views;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
@@ -40,6 +46,13 @@ public class CheckInController {
         }
         hotel.checkIn(guest);
         return Views.CheckInStatus.view().redirect();
+    }
+
+    @RequestMapping(value = "/availableRooms", method = RequestMethod.GET)
+    public @ResponseBody List<Room> availableRoomTypes(){
+        String fakeHotel = Hotel.prepare().create().getName();
+        return hotelRepository.availableRoomsFor(fakeHotel);
+
     }
 
 }

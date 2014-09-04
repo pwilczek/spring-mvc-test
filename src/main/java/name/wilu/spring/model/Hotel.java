@@ -29,6 +29,10 @@ public class Hotel {
         return Joiner.on(" ").join(guests);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static Builder prepare() {
         return new Builder();
     }
