@@ -1,5 +1,6 @@
 package name.wilu.spring.model;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +12,7 @@ public class Hotel {
 
     private final int capacity;
     private final List<Guest> guests;
-
-    public static Hotel withCapacity(int capacity) {
-        return new Hotel(capacity);
-    }
-
-
-    private Hotel(int capacity) {
-        Preconditions.checkArgument(capacity >= 0, "Hotel capacity cannot be negative!");
-        this.capacity = capacity;
-        this.guests = new ArrayList<Guest>(capacity);
-    }
+    private final String name;
 
     public boolean checkIn(Guest guest) {
         Preconditions.checkArgument(guests.size() < capacity, "Hotel capacity exceeded!");
@@ -34,4 +25,38 @@ public class Hotel {
         }
     }
 
+    public String getGuests() {
+        return Joiner.on(" ").join(guests);
+    }
+
+    public static Builder prepare(){
+        return new Builder();
+    }
+
+    private Hotel(int capacity, String name) {
+        Preconditions.checkArgument(capacity >= 0, "Hotel "+name+" capacity cannot be negative!");
+        this.name = name;
+        this.capacity = capacity;
+        this.guests = new ArrayList(capacity);
+    }
+
+
+    public static class Builder {
+        private int capacity = 1;
+        private String name = "none";
+
+        public Builder withCapacity(int capacity) {
+            this.capacity = capacity;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Hotel create() {
+            return new Hotel(capacity, name);
+        }
+    }
 }

@@ -5,7 +5,7 @@ package name.wilu.spring.view;
  */
 public enum Views {
 
-    CheckIn(View.of("checkIn"));
+    CheckIn(View.of("checkIn")),CheckInStatus(View.of("checkinStatus"));
     private final View view;
 
     private Views(View view) {
@@ -14,5 +14,9 @@ public enum Views {
 
     public View view(){
         return this.view;
+    }
+
+    public String viewName(){
+        return view().go();
     }
 }
