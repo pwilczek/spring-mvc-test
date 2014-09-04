@@ -11,7 +11,9 @@
     <form:form commandName="guest">
         <table>
             <tr>
-                <td><spring:message code="forName.text"/><form:input path="name"/></td>
+                <td><spring:message code="forName.text"/></td>
+                <td><form:input path="name"/></td>
+                <td><form:errors path="name"/></td>
                 <td><input type="submit" value="Reserve"</td>
             </tr>
         </table>

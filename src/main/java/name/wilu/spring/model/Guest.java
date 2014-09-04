@@ -1,10 +1,13 @@
 package name.wilu.spring.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * Created by PLPIWIL2 on 8/31/2014.
  */
 public class Guest {
 
+    @NotBlank(message = "Guest name cannot be blank!")
     private String name;
 
     public String getName() {
@@ -20,7 +23,4 @@ public class Guest {
         return getName();
     }
 
-    public boolean isNotEmpty() {
-        return name!=null && !name.isEmpty();
-    }
 }
