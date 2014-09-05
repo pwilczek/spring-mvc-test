@@ -5,7 +5,7 @@ package name.wilu.spring.model;
  */
 public class Room{
 
-    private final Integer beds;
+    private final int beds;
     private Standard standard=Standard.Medium;
 
     public static Room withBeds(Integer beds){
@@ -18,11 +18,11 @@ public class Room{
     }
 
 
-    private Room(Integer beds) {
+    private Room(int beds) {
         this.beds = beds;
     }
 
-    public Integer getBeds() {
+    public int getBeds() {
         return beds;
     }
 
